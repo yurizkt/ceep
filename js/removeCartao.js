@@ -18,6 +18,7 @@
       setTimeout(function(){
           cartao.remove();
       }, 400)
-
   }
+
+  window.removeCartao = removeCartao;
 })();

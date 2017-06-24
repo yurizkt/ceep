@@ -12,6 +12,7 @@
               this.textContent = 'Linhas';
           }
       }
+  )
 
-  );
+  window.mudaLayout = mudaLayout;
 })();
