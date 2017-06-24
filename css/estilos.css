@@ -21,11 +21,6 @@
   flex-grow: 1; /* O quanto cresce, relativamente aos outros itens */
 }
 
-.cartao--some{
-  opacity: 0;
-  transition: 0.2s ease-in;
-}
-
 @media (min-width: 590px) {
   .cartao {
     width: 190px;
@@ -68,4 +63,9 @@
         display: block;
     }
 
+}
+
+.cartao--some {
+    opacity: 0;
+    transition: .2s ease-in;
 }
