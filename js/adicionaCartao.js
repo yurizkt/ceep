@@ -11,6 +11,7 @@
 
     if(conteudo){
       controllerCartao.adicionaCartao(conteudo);
+      $(document).trigger("precisaSincronizar");
     }
 
     campoTexto.val('')
@@ -24,7 +25,7 @@
     var totalDeLetras = conteudo.replace(/<br>/g , " ").length;
 
     var ultimoMaior = ""; // 0
-    
+
     conteudo.replace(/<br>/g , " ")
             .split(" ")
             .forEach(function(palavra){
