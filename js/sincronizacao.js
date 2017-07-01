@@ -1,3 +1,17 @@
+var usuario = "yuri.zkt@gmail.com";
+
+$.getJSON(
+  "https://ceep.herokuapp.com/cartoes/carregar?callback=?",
+  {usuario: usuario},
+  function(res){
+    var cartoes = res.cartoes;
+    console.log(cartoes.length + " carregados em " + res.usuario);
+    cartoes.forEach(function(cartao){
+      controllerCartao.adicionaCartao(cartao.conteudo);
+    })
+  }
+)
+
 $("#sync").on('click', function(){
 
   var cartoes = [];
@@ -9,7 +23,7 @@ $("#sync").on('click', function(){
   });
 
   var mural = {
-    usuario : "yuri.zkt@gmail.com",
+    usuario : usuario,
     cartoes : cartoes
   }
 
