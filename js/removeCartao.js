@@ -9,15 +9,7 @@
   }
 
   function removeCartao(){
-
-      var cartao = document.querySelector('#cartao_'+ this.dataset.ref);
-      // var cartao = $('#cartao_'+this.dataset.ref)
-
-      cartao.classList.add('cartao--some');
-
-      setTimeout(function(){
-          cartao.remove();
-      }, 400)
+    controllerCartao.removeCartao();
   }
 
   window.removeCartao = removeCartao;

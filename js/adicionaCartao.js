@@ -3,53 +3,28 @@
 
   var contador = $('.cartao').length
 
-  function adicionaCartao(event){
+  $('#novoCartao').on('submit', function(){
+    event.preventDefault();
 
-        event.preventDefault();
+    var campoTexto = $('.novoCartao-conteudo');
+    var conteudo = campoTexto.val().trim().replace(/\n/g, '<br>');
 
-        var campoTexto = $('.novoCartao-conteudo');
-        var conteudo = campoTexto.val().trim().replace(/\n/g, '<br>');
+    if(conteudo){
+      controllerCartao.adicionaCartao(conteudo);
+    }
 
-        console.log(conteudo.length);
+    campoTexto.val('')
+  })
 
-        if(conteudo){
-
-              contador++
-
-              var buttonOpcoes = $('<button>').addClass('opcoesDoCartao-opcao')
-                                              .addClass('opcoesDoCartao-remove')
-                                              .attr('data-ref', contador)
-                                              .text('Remover')
-                                              .click(removeCartao)
-
-              var divOpcoes = $('<div>').addClass('opcoesDoCartao')
-                                        .append(buttonOpcoes)
-
-              var cartaoConteudo = $('<p>').addClass('cartao-conteudo')
-                                           .append(conteudo);
-
-              var tipoCartao = decideTipoCartao(conteudo);
-
-              var cartao = $('<div>').attr('id', 'cartao_'+ contador)
-                                     .addClass('cartao')
-                                     .addClass(tipoCartao)
-                                     .append(divOpcoes)
-                                     .append(cartaoConteudo)
-                                     .prependTo('.mural')
-
-              campoTexto.val('')
-        }
-
-  }
-
-  $('#novoCartao').on('submit', adicionaCartao);
+})();
 
   function decideTipoCartao(conteudo){
     var quebras = conteudo.replace("<br>").length;
 
     var totalDeLetras = conteudo.replace(/<br>/g , " ").length;
 
-    var ultimoMaior = "";
+    var ultimoMaior = ""; // 0
+    
     conteudo.replace(/<br>/g , " ")
             .split(" ")
             .forEach(function(palavra){
@@ -60,7 +35,7 @@
     var tamMaior = ultimoMaior.length;
 
     //no mínimo, todo cartão tem o texto pequeno
-    var tipoCartao = "cartao--textoPequeno";
+    var tipoCartao = "cartao--tecotxtoPequeno";
 
     if(tamMaior < 9 && quebras < 5 && totalDeLetras < 55){
       tipoCartao = "cartao--textoGrande";
@@ -71,7 +46,3 @@
     return tipoCartao;
 
   }
-
-  window.adicionaCartao = adicionaCartao;
-
-})();
