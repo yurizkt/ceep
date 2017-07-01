@@ -1,7 +1,7 @@
 var controllerCartao = (function(){
   var contador = 0;
 
-  function adicionaCartao(conteudo){
+  function adicionaCartao(conteudo, cor){
 
           contador++
 
@@ -24,6 +24,7 @@ var controllerCartao = (function(){
                                  .addClass(tipoCartao)
                                  .append(divOpcoes)
                                  .append(cartaoConteudo)
+                                 .css("background-color", cor)
                                  .prependTo('.mural')
   }
 

@@ -11,3 +11,13 @@ $('#busca').on('input', function(){
     $('.cartao').show();
   }
 });
+
+$('#ajuda').on('click', function(){
+  $.getJSON('https://ceep.herokuapp.com/cartoes/instrucoes', function(res){
+    console.log(res);
+
+    res.instrucoes.forEach(function(instrucao){
+      controllerCartao.adicionaCartao(instrucao.conteudo, instrucao.cor);
+    })
+  })
+});
